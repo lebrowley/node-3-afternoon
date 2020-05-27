@@ -11,9 +11,10 @@ massive({
     connectionString: CONNECTION_STRING,
     ssl: {rejectUnauthorized: false}
 }).then(dbInstance => {
-    app.set('db', dbInstance)
+    app.set('db', dbInstance)     //javascript setter
     console.log('db connected')
-}).catch(err => console.log(err));
+}).catch(err => console.log(err));   
+//so basically this is a list of functions strung together: massive, then, catch; they all have arguments going in and then their functionality is determined "under the hood" by massive? express? node?
 
 
 //----------------ENDPOINTS----------------------

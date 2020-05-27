@@ -1,10 +1,10 @@
 module.exports = {
-    create: (req, res, next) => {
+    create: (req, res, next) => {                               //why is next an argument?? 
         const dbInstance = req.app.get('db')
-        const {name, description, price, image_url} = req.body
+        const {name, description, price, image_url} = req.body //these have to be in the same order as what is in the create_product.sql right? that way the line up with the $1, $2, $3, $4 placeholders? 
 
         dbInstance.create_product([name, description, price, image_url])  //hold up- what is this doing? why is it an array? why are we passing them in as arguments?
-        .then( () => res.sendStatus(200))    //when do you have to send something and went don't you have to send something?
+        .then( () => res.sendStatus(200))    //when do you have to send something and when don't you have to send something?
         .catch( err => {
             res.status(500).send({errorMessage: 'Oops! Something went wrong. Our engineers have been informed!'})
             console.log(err)
